@@ -36,19 +36,6 @@ module.exports = function () {
           "class": "pagination VuePagination__pagination" },
         [h(
           "li",
-          { "class": "VuePagination__pagination-item page-item VuePagination__pagination-item-prev-chunk " + this.allowedChunkClass(-1) },
-          [h(
-            "a",
-            { "class": "page-link", attrs: { href: "javascript:void(0);"
-              },
-              on: {
-                click: this.setChunk.bind(this, -1)
-              }
-            },
-            ["<<"]
-          )]
-        ), h(
-          "li",
           { "class": "VuePagination__pagination-item page-item VuePagination__pagination-item-prev-page " + this.allowedPageClass(this.page - 1) },
           [h(
             "a",
@@ -60,7 +47,14 @@ module.exports = function () {
             },
             ["<"]
           )]
-        ), items, h(
+        ), h(
+            "li",
+            { "class": "active" },
+            [h(
+                "span",
+                [this.count]
+            )]
+        ), h(
           "li",
           { "class": "VuePagination__pagination-item page-item VuePagination__pagination-item-next-page " + this.allowedPageClass(this.page + 1) },
           [h(
@@ -73,30 +67,7 @@ module.exports = function () {
             },
             [">"]
           )]
-        ), h(
-          "li",
-          { "class": "VuePagination__pagination-item page-item VuePagination__pagination-item-next-chunk " + this.allowedChunkClass(1) },
-          [h(
-            "a",
-            { "class": "page-link", attrs: { href: "javascript:void(0);"
-              },
-              on: {
-                click: this.setChunk.bind(this, 1)
-              }
-            },
-            [">>"]
-          )]
         )]
-      ), h(
-        "p",
-        {
-          directives: [{
-            name: "show",
-            value: parseInt(this.records)
-          }],
-
-          "class": "VuePagination__count" },
-        [this.count]
       )]
     );
   };
