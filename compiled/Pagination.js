@@ -26,11 +26,6 @@ module.exports = {
       required: false,
       default: 10
     },
-    countText: {
-      type: String,
-      required: false,
-      default: 'Showing {from} to {to} of {count} records|{count} records|One record'
-    },
     vuex: {
       type: Boolean
     }
@@ -54,7 +49,8 @@ module.exports = {
   },
   data: function data() {
     return {
-      Page: 1
+      Page: 1,
+      countText: 'Showing {from} to {to} of {count} items|{count} items|One item'
     };
   },
   computed: {
